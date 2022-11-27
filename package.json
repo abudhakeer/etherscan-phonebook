@@ -3,17 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/chrome": "^0.0.202",
     "react": "^18.2.0",
     "react-browser-extension-scripts": "4.0.10",
     "react-dom": "^18.2.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:tailwind-dev": "tailwindcss build src/style.css -c ./tailwind.config.js -o dev/style.css",
+    "build:tailwind-prod": "tailwindcss build src/style.css -c ./tailwind.config.js -o build/style.css",
+    "start": "npm run build:tailwind-dev && react-scripts start",
+    "build": "react-scripts build && npm run build:tailwind-prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
   }
 }
